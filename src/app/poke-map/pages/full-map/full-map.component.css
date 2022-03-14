@@ -4,3 +4,13 @@
     min-width: 100vw;
     min-height: 88vh;
   }
+
+  .floating {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 99999;
+    margin: 1rem;
+    cursor: pointer;
+  }
+  
