@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
-import { data } from 'jquery';
 
 @Component({
   selector: 'app-full-map',
@@ -22,10 +21,10 @@ export class FullMapComponent implements OnInit, AfterViewInit {
   @ViewChild('map') divMapa!: ElementRef;
   public map!: mapboxgl.Map;
   public style = 'mapbox://styles/mapbox/streets-v11';
-  center: [number, number] = [-67.9454907, 10.1317113];
-  public latitude!: number;  
-  public longitud!: number;  
+  public latitude!: number;
+  public longitud!: number;
   public pokemons: any[] = [];
+  private meters: number = 200;
   ////////////
   // Constructor
   ////////////
@@ -40,24 +39,22 @@ export class FullMapComponent implements OnInit, AfterViewInit {
     this.map = new mapboxgl.Map({
       container: this.divMapa.nativeElement,
       style: this.style,
-      // center: [this.lng, this.lat],
-      zoom: 10,
+      zoom: 11,
     });
     this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
-    console.log('unasolavez');
-
-    this.geolocation();
-    // this.loadPokemons();
-    this.showPokemons();
+    this.initProcess();
   }
   ///////////////////
   // ngOnInit
   //////////////////
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  public initProcess() {
     navigator.geolocation.getCurrentPosition((pos) => {
       this.latitude = pos.coords.latitude;
       this.longitud = pos.coords.longitude;
-      // console.log(this.longitud);
+      this.showPokemons();
+      this.geolocation();
     });
   }
 
@@ -78,39 +75,26 @@ export class FullMapComponent implements OnInit, AfterViewInit {
   }
 
   public addPokemon() {
-    let latitude!: number;
-    let longitud!: number;
-    console.log('loquese');
-    
-      let positionRandom: any = this.getRandomLocation(longitud, latitude, 200);
-      const newPokemon = new mapboxgl.Marker({
-        draggable: true,
-      })
-        .setLngLat(positionRandom)
-        .addTo(this.map);
-  
-      this.pokemons.push({
-        marker: newPokemon,
+    this.pokemonsService.addRandomPokemon().then((resp) => {
+      resp.subscribe((pokemon) => {
+        let positionRandom: any = this.getRandomLocation();
+        const marker: HTMLElement = document.createElement('div');
+        marker.innerHTML = `<img src=\"${pokemon.url}\" width=\"80px\" height=\"80px\">`;
+        new mapboxgl.Marker({
+          element: marker,
+          draggable: true,
+        })
+          .setLngLat(positionRandom)
+          .setPopup(new mapboxgl.Popup().setHTML(`<h3>${pokemon.name}</h3>`)) // add popup
+          .addTo(this.map);
       });
-
-
+    });
   }
 
   public showPokemons() {
-    let latitude: number;
-    let longitud: number;
-    navigator.geolocation.getCurrentPosition((pos) => {
-      latitude = pos.coords.latitude;
-      longitud = pos.coords.longitude;
-    });
-
     this.pokemonsService.getPokemons().subscribe((data) => {
       for (let i = 0; i < data.length; i++) {
-        let positionrandom: any = this.getRandomLocation(
-          longitud,
-          latitude,
-          200
-        );
+        let positionrandom: any = this.getRandomLocation();
         const marker: HTMLElement = document.createElement('div');
         marker.innerHTML = `<img src=\"${data[i].url}\" width=\"80px\" height=\"80px\">`;
         new mapboxgl.Marker({
@@ -123,23 +107,21 @@ export class FullMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
-  public getRandomLocation = function (
-    //     /**
-    //  * Get random geo point [latitude, longitude] within some distance from specified geo point (lat, long)
-    //  *
-    //  * Points will be uniformly-distributed on multiple calls.
-    //  *
-    //  * @param lat Latitude in degrees
-    //  * @param lng Longitude in degrees
-    //  * @param distance Distance in meters to limit point distribution to.
-    //  *                 If negative value is provided, points will be generated on exact distance (e.g. on circle border).
-    //  * @returns {*[]} Array with [latitude, longitude]
 
-    lat: number,
-    lng: number,
-    distance = 200
-  ) {
+  public getRandomLocation() //  * Get random geo point [latitude, longitude] within some distance from specified geo point (lat, long) //     /**
+  //  *
+  //  * Points will be uniformly-distributed on multiple calls.
+  //  *
+  //  * @param lat Latitude in degrees
+  //  * @param lng Longitude in degrees
+  //  * @param distance Distance in meters to limit point distribution to.
+  //  *                 If negative value is provided, points will be generated on exact distance (e.g. on circle border).
+  //  * @returns {*[]} Array with [latitude, longitude]
+  {
     // Convert to radians
+    let distance = this.meters;
+    let lat = this.latitude;
+    let lng = this.longitud;
     lat *= Math.PI / 180;
     lng *= Math.PI / 180;
 
@@ -188,6 +170,6 @@ export class FullMapComponent implements OnInit, AfterViewInit {
     nLat *= 180 / Math.PI;
     nLng *= 180 / Math.PI;
 
-    return [nLat, nLng];
-  };
+    return [nLng, nLat];
+  }
 }

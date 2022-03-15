@@ -8,7 +8,7 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  title = 'pokeRadarTest';
   ngOnInit(): void {
    
     //Toggle Click Function
@@ -21,5 +21,4 @@ export class AppComponent implements OnInit {
       $('#wrapper').toggleClass('toggled');
     });
   }
-  title = 'pokeRadarTest';
 }
