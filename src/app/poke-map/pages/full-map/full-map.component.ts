@@ -1,3 +1,4 @@
+import { Pokemon } from './../../../shared/interface/pokemon';
 import { PokemonsService } from './../../../shared/services/pokemons.service';
 import {
   AfterViewInit,
@@ -92,30 +93,29 @@ export class FullMapComponent implements OnInit, AfterViewInit {
   }
 
   public showPokemons() {
-    this.pokemonsService.getPokemons().subscribe((data) => {
-      for (let i = 0; i < data.length; i++) {
+    this.pokemonsService.getPokemons().subscribe((data: Pokemon[]) => {
+      data.forEach((item) => {
         let positionrandom: any = this.getRandomLocation();
         const marker: HTMLElement = document.createElement('div');
-        marker.innerHTML = `<img src=\"${data[i].url}\" width=\"80px\" height=\"80px\">`;
+        marker.innerHTML = `<img src=\"${item.url}\" width=\"80px\" height=\"80px\">`;
         new mapboxgl.Marker({
           element: marker,
           draggable: true,
         })
           .setLngLat(positionrandom)
-          .setPopup(new mapboxgl.Popup().setHTML(`<h3>${data[i].name}</h3>`)) // add popup
+          .setPopup(new mapboxgl.Popup().setHTML(`<h3>${item.name}</h3>`)) // add popup
           .addTo(this.map);
-      }
+      });
     });
   }
 
-  public getRandomLocation() //  * Get random geo point [latitude, longitude] within some distance from specified geo point (lat, long) //     /**
-  //  *
+  public getRandomLocation() //  * //  * Get random geo point [latitude, longitude] within some distance from specified geo point (lat, long) //     /**
   //  * Points will be uniformly-distributed on multiple calls.
   //  *
   //  * @param lat Latitude in degrees
   //  * @param lng Longitude in degrees
   //  * @param distance Distance in meters to limit point distribution to.
-  //  *                 If negative value is provided, points will be generated on exact distance (e.g. on circle border).
+  //  * If negative value is provided, points will be generated on exact distance (e.g. on circle border).
   //  * @returns {*[]} Array with [latitude, longitude]
   {
     // Convert to radians
@@ -125,7 +125,7 @@ export class FullMapComponent implements OnInit, AfterViewInit {
     lat *= Math.PI / 180;
     lng *= Math.PI / 180;
 
-    var radius;
+    let radius;
 
     // Distance should be set in meters, negative for exact distance
     if (distance < 0) {
@@ -147,10 +147,10 @@ export class FullMapComponent implements OnInit, AfterViewInit {
     radius *= Math.PI / 180;
 
     // Random angle
-    var angle = Math.random() * Math.PI * 2;
+    let angle = Math.random() * Math.PI * 2;
 
     // Get a point {nLat,nLng} in a distance={radius} out on the {angle} radial from point {lat,lng}
-    var nLng,
+    let nLng,
       nLat = Math.asin(
         Math.sin(lat) * Math.cos(radius) +
           Math.cos(lat) * Math.sin(radius) * Math.cos(angle)

@@ -89,6 +89,18 @@
       "customId": 87,
       "name": "dewgong",
       "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/87.png"
+    },
+    {
+      "id": 1647353927207,
+      "customId": 37,
+      "name": "vulpix",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/37.png"
+    },
+    {
+      "id": 1647353930454,
+      "customId": 49,
+      "name": "venomoth",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png"
     }
   ]
 }

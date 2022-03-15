@@ -20,6 +20,7 @@ export class PokemonsService {
   public getPokemonById(id: number) {
     return this.http.get<any>(`${this.apiUrlPokemon}${id}`).toPromise();
   }
+  
   public async addRandomPokemon(): Promise<Observable<any>> {
     let randomPokemon = Math.floor(Math.random() * (100 - 1)) + 1;
     let currenValue = await this.getPokemonById(randomPokemon);

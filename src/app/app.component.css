@@ -22,7 +22,7 @@ body {
   #sidebar-wrapper .list-group {
     margin: 10px;
     height: 100vh;
-    width: 15rem;
+    width: 9rem;
     overflow: scroll;
     cursor: pointer;
   }
