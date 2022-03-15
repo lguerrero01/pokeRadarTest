@@ -2,9 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Instrucciones
+
+Para correr el proyecto debera ejecutar (npm install) para instalar dependencias, luego (npm run json:server) y por ultimo (ng serve -o). Luego se abrira una ventana en `http://localhost:4200/map/fullMap`.
 
 ## Code scaffolding
 
