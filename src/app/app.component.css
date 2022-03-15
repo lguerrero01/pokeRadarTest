@@ -11,7 +11,8 @@ body {
   }
   #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
   #sidebar-wrapper .sidebar-close {
     font-size: 1rem;
@@ -19,7 +20,11 @@ body {
     margin: 20px;
   }
   #sidebar-wrapper .list-group {
+    margin: 10px;
+    height: 100vh;
     width: 15rem;
+    overflow: scroll;
+    cursor: pointer;
   }
   #page-content-wrapper {
     min-width: 100vw;
