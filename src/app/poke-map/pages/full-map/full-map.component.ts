@@ -25,7 +25,7 @@ export class FullMapComponent implements OnInit, AfterViewInit {
   public latitude!: number;
   public longitud!: number;
   public pokemons: any[] = [];
-  private meters: number = 200;
+  private meters: number = 1000;
   ////////////
   // Constructor
   ////////////

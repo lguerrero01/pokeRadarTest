@@ -101,6 +101,90 @@
       "customId": 49,
       "name": "venomoth",
       "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png"
+    },
+    {
+      "id": 1647356729083,
+      "customId": 85,
+      "name": "dodrio",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png"
+    },
+    {
+      "id": 1647356735618,
+      "customId": 11,
+      "name": "metapod",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+    },
+    {
+      "id": 1647356736424,
+      "customId": 4,
+      "name": "charmander",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+    },
+    {
+      "id": 1647356736675,
+      "customId": 47,
+      "name": "parasect",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png"
+    },
+    {
+      "id": 1647356736815,
+      "customId": 49,
+      "name": "venomoth",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/49.png"
+    },
+    {
+      "id": 1647356737980,
+      "customId": 42,
+      "name": "golbat",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/42.png"
+    },
+    {
+      "id": 1647356738262,
+      "customId": 78,
+      "name": "rapidash",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/78.png"
+    },
+    {
+      "id": 1647356738430,
+      "customId": 53,
+      "name": "persian",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/53.png"
+    },
+    {
+      "id": 1647356759763,
+      "customId": 18,
+      "name": "pidgeot",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/18.png"
+    },
+    {
+      "id": 1647356763300,
+      "customId": 35,
+      "name": "clefairy",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/35.png"
+    },
+    {
+      "id": 1647356763365,
+      "customId": 75,
+      "name": "graveler",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/75.png"
+    },
+    {
+      "id": 1647356763606,
+      "customId": 52,
+      "name": "meowth",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png"
+    },
+    {
+      "id": 1647356775576,
+      "customId": 83,
+      "name": "farfetchd",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/83.png"
+    },
+    {
+      "id": 1647357171259,
+      "customId": 62,
+      "name": "poliwrath",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/62.png"
     }
   ]
 }
